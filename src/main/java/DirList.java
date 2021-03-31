@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileReader;
 import java.io.FilenameFilter;
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -12,9 +13,9 @@ public class DirList {
     }
 
     public static void getDir(String[] args) {
-        File path = new File("src/main/resources");
+        File path = new File("src/main/resources/");
         System.out.println(path.getAbsolutePath());
-        System.out.println(path.list());
+//        System.out.println(path.list());
         String[] list;
         if (args.length == 0) {
             list = path.list();

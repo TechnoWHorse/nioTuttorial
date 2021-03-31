@@ -19,7 +19,17 @@ public class DirList {
         if (args.length == 0) {
             list = path.list();
         } else {
-            list = path.list(new DirFilter(args[0]));
+//            list = path.list(new FilenameFilter(){
+//                private Pattern pattern = Pattern.compile(args[0]);
+//
+//                @Override
+//                public boolean accept(File dir, String name) {
+//                    return pattern.matcher(name).matches();
+//                }
+//            });
+            list = path.list((x,y)->{
+                return Pattern.compile(args[0]).matcher(y).matches();
+            });
         }
         Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
         for (String dirItem : list) {

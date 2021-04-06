@@ -5,11 +5,11 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-public class DirList2 {
+public class DirExpresionFinder {
     public static void main(String[] args) throws IOException {
-        String[] arg = {".*Hello"};
+        String[] arg = {".*Hello.*"};
         System.out.println(arg[0]);
-        DirList2.getDir(arg);
+        DirExpresionFinder.getDir(arg);
 
     }
 
@@ -34,6 +34,7 @@ public class DirList2 {
                         BufferedReader reader = new BufferedReader(new InputStreamReader(Files.newInputStream(fileAbsolutePath)));
                         String stringFromReader = reader.readLine();
                         while (stringFromReader != null) {
+//                            System.out.println(stringFromReader);
                             if (pattern.matcher(stringFromReader).matches()) {
                                 result = true;
                             }

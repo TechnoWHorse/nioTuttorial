@@ -6,32 +6,16 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String stringSPath = "src/main/resources/test.txt";
-        String stringTPath = "src/main/resources/test2.txt";
-        Path sourcePath = Paths.get(stringSPath);
-        Path targetPath = Paths.get(stringTPath);
+        BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/test.txt"));
 
-        File file = new File(stringSPath);
-
-        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("Hello world!".getBytes());
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-
-
-        Files.copy(byteArrayInputStream, targetPath, StandardCopyOption.REPLACE_EXISTING);
-        Files.copy(targetPath, byteArrayOutputStream);
-
-        System.out.println(byteArrayOutputStream.toString());
-
-
-        InputStream is = Files.newInputStream(targetPath, StandardOpenOption.READ);
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
-        List<String> list = new ArrayList<>();
-        String temp =bufferedReader.readLine();
-        while (temp!=null){
-            temp = bufferedReader.readLine();
-            list.add(temp);
-            System.out.println(temp);
+        for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+            System.out.println(line + " 1");
         }
-        System.out.println(list);
+        reader.reset();
+
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line + " 2");
+        }
     }
 }

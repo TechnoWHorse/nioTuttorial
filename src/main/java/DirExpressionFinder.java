@@ -5,11 +5,11 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
-public class DirExpresionFinder {
+public class DirExpressionFinder {
     public static void main(String[] args) throws IOException {
         String[] arg = {".*Hello.*"};
         System.out.println(arg[0]);
-        DirExpresionFinder.getDir(arg);
+        DirExpressionFinder.getDir(arg);
 
     }
 
@@ -23,13 +23,11 @@ public class DirExpresionFinder {
         } else {
             list = path.list(new FilenameFilter() {
                 private final Pattern pattern = Pattern.compile(args[0]);
-                private Path fileAbsolutePath;
-
 
                 @Override
                 public boolean accept(File dir, String name) {
                     boolean result = false;
-                    fileAbsolutePath = Paths.get(dir.getAbsolutePath() + "\\" + name);
+                    Path fileAbsolutePath = Paths.get(dir.getAbsolutePath() + "\\" + name);
                     try {
                         BufferedReader reader = new BufferedReader(new InputStreamReader(Files.newInputStream(fileAbsolutePath)));
                         String stringFromReader = reader.readLine();
@@ -52,6 +50,7 @@ public class DirExpresionFinder {
 //            });
         }
 
+        assert list != null;
         Arrays.sort(list, String.CASE_INSENSITIVE_ORDER);
         for (String dirItem : list) {
             System.out.println(dirItem);

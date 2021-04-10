@@ -1,7 +1,6 @@
-package tasks;
+package librarry;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 
 public class Console {
@@ -11,13 +10,13 @@ public class Console {
 	public static void usage() {
 		System.out.println(
 				 """
-						  create directory:
-						  path...
-						  delete directory:
-						  -d path...
-						  rename directory:
-						  -r path path
-						   """
+                    create directory:
+                    path...
+                    delete directory:
+                    -d path...
+                    rename directory:
+                    -r path path
+                     """
 		);
 		System.exit(1);
 	}
